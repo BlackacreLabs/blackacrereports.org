@@ -22,6 +22,14 @@ class BlackacreReports < Sinatra::Base
   configure :production do
     require 'newrelic_rpm'
   end
+
+  # Redirects
+  configure :production do
+    if ENV['CANONICAL_HOST']
+      require 'rack-canonical-host'
+      use Rack::CanonicalHost, ENV['CANONICAL_HOST']
+    end
+  end
   
   get '/' do
     @recent_cases = Case.head.desc(:decided)

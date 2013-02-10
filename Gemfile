@@ -4,6 +4,7 @@ ruby '1.9.3'
 
 # Web
 gem 'newrelic_rpm'
+gem 'rack-canonical-host'
 gem 'sinatra'
 gem 'sinatra-partial'
 gem 'thin'
