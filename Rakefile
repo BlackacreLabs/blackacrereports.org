@@ -18,8 +18,10 @@ unless ENV['RACK_ENV'] == 'production'
   end
 end
 
-desc "Synchronize database with the data repository"
-task :synchronize do
-  ruby 'scripts/synchronize.rb'
+namespace :data do
+  desc "Clone and mirror data repository"
+  task :update do
+    ruby 'scripts/data/update.rb'
+  end
 end
 

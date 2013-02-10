@@ -11,7 +11,7 @@ require 'yaml'
 require 'logger'
 $log = Logger.new STDOUT
 
-require_relative '../environment'
+require_relative '../../environment'
 
 def preserialize(hash)
   hash.reduce({}) do |mem, (key, value)|
@@ -72,16 +72,20 @@ Dir.mktmpdir do |dir|
 
   if LAST_SYNC
     last_hash = LAST_SYNC.commit_hash
-    changed = `git diff --name-only "#{last_hash}"`
-    changed = changed.split("\n")
-    $log.info "#{changed.count} changed since #{last_hash}"
-    changed.map { |l|
-      File.dirname(l)
-    }.uniq.each { |dir|
-      next unless File.exist?(File.join(dir, 'case.yml'))
-      $log.info dir
-      Case.create(case_hash(dir, HEAD_HASH, HEAD_TIME))
-    }
+    if last_hash == HEAD_HASH
+      $log.info "Already syncd to HEAD"
+    else
+      changed = `git diff --name-only "#{last_hash}"`
+      changed = changed.split("\n")
+      $log.info "#{changed.count} changed since #{last_hash}"
+      changed.map { |l|
+        File.dirname(l)
+      }.uniq.each { |dir|
+        next unless File.exist?(File.join(dir, 'case.yml'))
+        $log.info dir
+        Case.create(case_hash(dir, HEAD_HASH, HEAD_TIME))
+      }
+    end
   else
     $log.info "No previous synchronization"
     Dir['**/case.yml'].each do |yaml|
