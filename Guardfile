@@ -20,7 +20,7 @@ end
 
 guard 'rack', :start_on_start => true, :server => :thin do
   watch('Gemfile.lock')
-  watch(%r{^[^/].+\.rb})
+  watch('application.rb')
   watch(%r{^(config|lib|app)/.*})
 end
 
