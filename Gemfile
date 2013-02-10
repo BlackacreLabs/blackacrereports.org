@@ -3,6 +3,7 @@ source :rubygems
 ruby '1.9.3'
 
 # Web
+gem 'newrelic_rpm'
 gem 'sinatra'
 gem 'sinatra-partial'
 gem 'thin'

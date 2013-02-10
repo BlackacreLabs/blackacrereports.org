@@ -16,6 +16,11 @@ class BlackacreReports < Sinatra::Base
   configure :production, :development do
     enable :logging
   end
+
+  # Analytics
+  configure :production do
+    require 'newrelic_rpm'
+  end
   
   get '/' do
     @recent_cases = Case.desc(:decided)

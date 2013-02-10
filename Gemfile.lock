@@ -96,6 +96,7 @@ GEM
       tzinfo (~> 0.3.22)
     moped (1.4.0)
     multi_json (1.5.0)
+    newrelic_rpm (3.5.6.46)
     nokogiri (1.5.6)
     origin (1.0.11)
     polyglot (0.3.3)
@@ -174,6 +175,7 @@ DEPENDENCIES
   guard-sass
   haml
   mongoid (~> 3.0)
+  newrelic_rpm
   precedent!
   rake
   rb-fchange
