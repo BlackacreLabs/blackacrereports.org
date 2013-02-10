@@ -1,3 +1,5 @@
+require 'mongoid'
+
 class Synchronization
   include Mongoid::Document
 

@@ -4,7 +4,7 @@ end
 
 guard 'coffeescript', :input => 'public/js'
 
-guard 'rack', :start_on_start => true, :server => :thin do
+guard 'rack', :server => :thin do
   watch('Gemfile.lock')
   watch('application.rb')
   watch('environment.rb')

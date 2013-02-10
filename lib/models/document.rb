@@ -1,5 +1,7 @@
 require_relative '../document_to_html'
 
+require 'mongoid'
+
 class Document
   include Mongoid::Document
 

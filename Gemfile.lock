@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/BlackacreLabs/precedent.git
-  revision: 31d8981098a93d93b51667758e46d98a8667ebba
+  revision: 0dccdb1783f634106f02445fbf14014aa37ebd2f
   specs:
     precedent (0.0.1)
       activesupport
@@ -36,8 +36,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 1.0.0)
-    childprocess (0.3.7)
-      ffi (~> 1.0, >= 1.0.6)
+    childprocess (0.3.8)
+      ffi (~> 1.0, >= 1.0.11)
     coderay (1.0.8)
     coffee-script (2.2.0)
       coffee-script-source
@@ -75,8 +75,9 @@ GEM
       libnotify (~> 0.1.3)
       rb-inotify (>= 0.5.1)
       spoon (~> 0.0.1)
-    guard-rspec (1.2.1)
+    guard-rspec (2.4.0)
       guard (>= 1.1)
+      rspec (~> 2.11)
     guard-sass (1.0.2)
       guard (>= 1.1.0)
       sass (>= 3.1)
@@ -94,7 +95,7 @@ GEM
       moped (~> 1.2)
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
-    moped (1.4.0)
+    moped (1.4.2)
     multi_json (1.5.0)
     newrelic_rpm (3.5.6.46)
     nokogiri (1.5.6)

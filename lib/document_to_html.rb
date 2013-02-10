@@ -4,7 +4,7 @@ require 'nokogiri'
 require 'precedent'
 
 class DocumentToHTML
-  LEFT_COLUMN_WIDTH = 2
+  LEFT_COLUMN_WIDTH = 1
   MIDDLE_COLUMN_WIDTH = 7
   RIGHT_COLUMN_WIDTH = 12 - LEFT_COLUMN_WIDTH - MIDDLE_COLUMN_WIDTH
 
@@ -32,6 +32,7 @@ class DocumentToHTML
   private
 
   def add_rows(node, parent, quote=false)
+    return if node.is_a?(Nokogiri::XML::Comment)
     case node.name
     when 'p'
       row = Nokogiri::XML::Node.new('div', parent)
