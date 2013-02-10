@@ -3,7 +3,6 @@ source :rubygems
 ruby '1.9.3'
 
 # Web
-gem 'rack-ssl-enforcer'
 gem 'sinatra'
 gem 'sinatra-partial'
 gem 'thin'
