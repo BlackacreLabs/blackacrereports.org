@@ -1,0 +1,15 @@
+- links = { '/' => 'Home' }
+%nav.navbar
+  .navbar-inner
+    .container
+      .btn.btn-navbar{'data-toggle' => 'collapse',
+                      'data-target' => '.nav-collapse'}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{:href => '/'} Blackacre Reports
+      .nav-collapse
+        %ul.nav
+          - links.each do |href, title|
+            %li{:class => request.path == href ? 'active' : '' }
+              %a{:href => href}= title

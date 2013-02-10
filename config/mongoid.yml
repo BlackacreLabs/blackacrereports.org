@@ -1,0 +1,19 @@
+production:
+  sessions:
+    default:
+      uri: <%= ENV['MONGOHQ_URL'] %>
+      options:
+        skip_version_check: true
+        safe: true
+development:
+  sessions:
+    default:
+      database: blackacrereports_devevlop
+      hosts:
+        - localhost:27017
+test:
+  sessions:
+    default:
+      database: blackacrereports_test
+      hosts:
+        - localhost:27017
