@@ -8,7 +8,7 @@ production:
 development:
   sessions:
     default:
-      database: blackacrereports_devevlop
+      database: blackacrereports_development
       hosts:
         - localhost:27017
 test:
