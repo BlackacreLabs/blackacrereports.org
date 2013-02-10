@@ -9,8 +9,9 @@ gem 'sinatra-partial'
 gem 'thin'
 
 # Misc
-gem 'rake'
+gem 'aws-s3'
 gem 'haml'
+gem 'rake'
 
 # Databae
 gem 'mongoid', '~>3.0'
@@ -19,6 +20,8 @@ gem 'bson_ext'
 # Homegrown
 gem 'bluebook', :github => 'BlackacreLabs/bluebook'
 gem 'precedent', :github => 'BlackacreLabs/precedent'
+
+gem 'dotenv', :groups => [:development, :test]
 
 group :development do
   gem 'foreman'

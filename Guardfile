@@ -8,7 +8,7 @@ guard 'rack', :server => :thin do
   watch('Gemfile.lock')
   watch('application.rb')
   watch('environment.rb')
-  watch(%r{^(config|lib|app)/.*})
+  watch(%r{^(config|lib|routes)/.*})
 end
 
 guard 'rspec' do
