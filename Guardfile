@@ -10,17 +10,24 @@ guard 'cucumber' do
   watch(%r{^features/step_definitions/(.+)_steps\.rb$}) do |m|
     Dir[File.join("**/#{m[1]}.feature")][0] || 'features'
   end
+
+  watch(%r{^spec/fabricators/.+\.rb$})
+
+  watch(%r{^[^/].+\.rb})
+  watch(%r{^(config|lib|app)/.*})
+  watch(%r{^views/.+\.haml})
 end
 
 guard 'rack', :start_on_start => true, :server => :thin do
   watch('Gemfile.lock')
+  watch(%r{^[^/].+\.rb})
   watch(%r{^(config|lib|app)/.*})
 end
 
 guard 'rspec' do
   watch(%r{^spec/.+_spec\.rb$})
-  watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
-  watch('spec/spec_helper.rb')  { "spec" }
+  watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
+  watch('spec/spec_helper.rb') { "spec" }
 end
 
 guard 'sass', :input => 'public/css'

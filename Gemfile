@@ -41,5 +41,7 @@ group :test do
   gem 'cucumber-websteps'
   gem 'database_cleaner'
   gem 'fabrication'
+  gem 'faker'
+  gem 'launchy'
   gem 'rspec'
 end

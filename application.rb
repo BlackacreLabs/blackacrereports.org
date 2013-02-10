@@ -1,9 +1,9 @@
 require_relative 'environment'
 
 require 'haml'
-require 'logger'
 require 'sinatra'
 require 'sinatra/partial'
+require 'bluebook/date_patch'
 
 class BlackacreReports < Sinatra::Base
   register Sinatra::Partial
@@ -24,6 +24,7 @@ class BlackacreReports < Sinatra::Base
   end
   
   get '/' do
+    @recent_cases = Case.desc(:decided).limit(10)
     haml :index
   end
 end

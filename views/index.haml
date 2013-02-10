@@ -1,1 +1,8 @@
-%h1 Blackacre Reports
+.row-fluid
+  .span2
+  .span7
+    %h1 Recent Cases
+    %ul
+      - @recent_cases.each do |c|
+        %li= partial :case_link, :locals => {:c => c}
+  .span3
