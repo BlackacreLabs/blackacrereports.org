@@ -16,8 +16,8 @@ gem 'mongoid', '~>3.0'
 gem 'bson_ext'
 
 # Homegrown
-gem 'bluebook', :git => 'git://github.com/BlackacreLabs/bluebook.git'
-gem 'precedent', :git => 'git://github.com/BlackacreLabs/precedent.git'
+gem 'bluebook', :github => 'BlackacreLabs/bluebook'
+gem 'precedent', :github => 'BlackacreLabs/precedent'
 
 group :development do
   gem 'foreman'
