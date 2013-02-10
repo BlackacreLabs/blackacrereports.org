@@ -57,6 +57,13 @@ if LAST_SYNC
   $log.info "Last sync commit: #{LAST_SYNC.commit_hash}"
 end
 
+def create_case(path, hash, time)
+  # Mark previous versions as superseded
+  Case.where(data_path: path).update(head: false)
+  # Create the new document
+  Case.create(case_hash(path, hash, time))
+end
+
 Dir.mktmpdir do |dir|
   $log.info "Cloning #{REPO} to #{dir}"
   `git clone "#{REPO}" "#{dir}"`
@@ -83,7 +90,7 @@ Dir.mktmpdir do |dir|
       }.uniq.each { |dir|
         next unless File.exist?(File.join(dir, 'case.yml'))
         $log.info dir
-        Case.create(case_hash(dir, HEAD_HASH, HEAD_TIME))
+        create_case(dir, HEAD_HASH, HEAD_TIME)
       }
     end
   else
@@ -91,7 +98,7 @@ Dir.mktmpdir do |dir|
     Dir['**/case.yml'].each do |yaml|
       dir = File.dirname(yaml)
       $log.info dir
-      Case.create(case_hash(dir, HEAD_HASH, HEAD_TIME))
+      create_case(dir, HEAD_HASH, HEAD_TIME)
     end
   end
 

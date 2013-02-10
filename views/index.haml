@@ -32,10 +32,12 @@
     %h2 Take the Law With You
     %p
       Download a United States Reports PDF:
-    %form#pdfDownload.form-inline
-      %input.input-mini{:name => :volume, :type => :number, :min => 1, :max => 552, :value => 552}
+    %form#pdfDownload.form-inline{:action => '/pdf'}
+      %input.input-mini{:name => :volume, :type => :number,
+                        :min => 1, :max => 552, :value => 552}
       &nbsp;U.S.&nbsp;
-      %input.input-mini{:name => :page, :type => :number, :min => 1, :max => 1400, :value => 1}
+      %input.input-mini{:name => :page, :type => :number,
+                        :min => 1, :max => 1400, :value => 1}
       &nbsp;
       %button.btn{:type => :submit, :title => 'Download PDF'}
         Download

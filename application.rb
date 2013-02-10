@@ -23,7 +23,7 @@ class BlackacreReports < Sinatra::Base
   end
   
   get '/' do
-    @recent_cases = Case.desc(:decided)
+    @recent_cases = Case.head.desc(:decided)
     haml :index
   end
 

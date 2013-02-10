@@ -17,6 +17,8 @@ class Case
   field :commit_hash, type: String
   field :commit_time, type: Time
   field :data_path,   type: String
+  field :head,        type: Boolean, default: true
+  scope :head, where(head: true)
 
   def self.decided_in(year)
     where(
