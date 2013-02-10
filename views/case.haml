@@ -1,3 +1,41 @@
 .row-fluid
-  .page-header
-    %h1= @case.style
+  .span9
+    %h1
+      = @case.style
+      %br
+      %small= @case.citation
+.row-fluid
+  .span9
+    %ul.inline.meta.well
+      - if @case.argued
+        %li 
+          Argued
+          = @case.argued.to_bluebook
+      - if @case.decided
+        %li
+          Decided
+          = @case.decided.to_bluebook
+      - if @case.number
+        %li
+          Number
+          = @case.number
+- sorted = @case.documents.sort {|a, b| a.page <=> b.page }
+.tabbable
+  .row-fluid
+    .span12
+      %ul.nav.nav-tabs
+        - sorted.each_with_index do |opinion, index|
+          %li{:class => index == 0 ? 'active' : nil }
+            %a{:id => "#{opinion.short_name}-tab", :href => "##{opinion.short_name}", 'data-toggle' => 'tab'}
+              %i{:class => "#{opinion.type_icon}"}= ' '
+              %strong= opinion.short_name
+  .tab-content
+    - sorted.each_with_index do |opinion, index|
+      %article.opinion{:id => "#{opinion.short_name}",
+                       :class => index == 0 ? 'tab-pane active' : 'tab-pane'}
+        = opinion.html_rows.to_html(indent: 2, encoding: 'UTF-8')
+        .row-fluid
+          %small
+            .span3.offset9.raggedleft
+              %a{:href => '#top'}
+                Back to Top

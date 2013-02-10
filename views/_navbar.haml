@@ -7,9 +7,17 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.brand{:href => '/'} Blackacre Reports
+      %a.brand{:href => '/'}
+        Blackacre Reports
       .nav-collapse
         %ul.nav
           - links.each do |href, title|
             %li{:class => request.path == href ? 'active' : '' }
               %a{:href => href}= title
+        %form#searchForm.form-search.navbar-search.pull-right
+          .input-append
+            %input.search-query{:type => :text,
+                                :name => :query,
+                                :placeholder => :Search}
+            %button.btn{:type => :submit}
+              %i.icon-search

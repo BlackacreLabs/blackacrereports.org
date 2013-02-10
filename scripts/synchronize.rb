@@ -18,6 +18,8 @@ def preserialize(hash)
     case value
     when Date
       mem[key.to_s] = value.to_time
+    when Symbol
+      mem[key.to_s] = value.to_s
     when Array
       mem[key.to_s] = value.map do |e|
         e.is_a?(Hash) ? preserialize(e) : e

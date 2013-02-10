@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/BlackacreLabs/precedent.git
-  revision: b517874463ddd349f1c7b648c483db3eb97fb6b6
+  revision: 31d8981098a93d93b51667758e46d98a8667ebba
   specs:
     precedent (0.0.1)
       activesupport
