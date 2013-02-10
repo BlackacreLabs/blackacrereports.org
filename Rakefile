@@ -1,11 +1,10 @@
 unless ENV['RACK_ENV'] == 'production'
   require 'rspec/core/rake_task'
-  RSpec::Core::RakeTask.new
+  RSpec::Core::RakeTask.new(:spec) do |t|
+    t.pattern = './spec/**/*{_spec.rb,.feature}'
+  end
 
-  require 'cucumber/rake/task'
-  Cucumber::Rake::Task.new(:features)
-
-  task :default => [:features, :spec]
+  task :default => :spec
 
   namespace :db do
     desc "Delete all database records"

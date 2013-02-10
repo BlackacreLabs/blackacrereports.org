@@ -1,8 +1,55 @@
 .row-fluid
+  .hero-unit
+    %h1 Blackacre Reports
+    %p
+      Read, annotate, and discuss the court decisions that shape our
+      world.
+.row-fluid
   .span2
+    %h2 Learn the Ropes
+    %p.muted
+      The opinions of the Supreme Court tell us <em>what the law means</em>
+      and <em>why</em>.
+    %p
+      The Supreme Court shapes the law by deciding “cases,” or
+      disagreements between people, companies, and government bodies
+      that come up during lawsuits. Every year, the Supreme Court grants
+      a limited number of “petitions,” or requests from losing
+      parties in lawsuits, to review decisions of other courts involving
+      the United States Constitution or other federal law.
+    %p
+      The Court decides these cases by a majority vote after reading
+      the arguments of both sides. For each case, a justice writes an
+      explanation—called a legal “opinion”—that explains how
+      the majority came to its decision. Other justices may also write
+      their own opinions to explain why they agree or disagree.
   .span7
-    %h1 Recent Cases
+    %h2 Recent Cases
     %ul
       - @recent_cases.each do |c|
         %li= partial :case_link, :locals => {:c => c}
   .span3
+    %h2 Take the Law With You
+    %p
+      Download a United States Reports PDF:
+    %form#pdfDownload.form-inline
+      %input.input-mini{:name => :volume, :type => :number, :min => 1, :max => 552, :value => 552}
+      &nbsp;U.S.&nbsp;
+      %input.input-mini{:name => :page, :type => :number, :min => 1, :max => 1400, :value => 1}
+      &nbsp;
+      %button.btn{:type => :submit, :title => 'Download PDF'}
+        Download
+        %img{:src => '/img/pdficon_small.png', :alt => 'Download PDF'}
+    %h2 Research the Law
+    %p
+      Blackacre Reports is powered by open source software and open data files.
+      %a{:href => 'https://github.com/BlackacreLabs/unitedstatesreporter'}
+        Browse the source code repository containing opinion data
+      or
+      %a{:href => 'https://github.com/BlackacreLabs/'}
+        have a look at the other tools we’ve developed
+      to wrangle legal information.
+    %h2 Get Involved
+    %p
+      %a{:href => 'http://www.blackacrelabs.org'} Blackacre Labs
+      is working to make the nation’s laws more accessible, approachable, and interactive.

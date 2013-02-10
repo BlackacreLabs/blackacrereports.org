@@ -1,6 +1,5 @@
-%a{:href => '/'}
-  = succeed ',' do
-    %em
+= succeed ',' do
+  %a{:href => c.href}<>
+    %em<>
       = c.style
-  = "No. #{c.number}"
-  = "(#{c.decided.to_bluebook})"
+= c.citation

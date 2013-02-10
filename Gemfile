@@ -25,7 +25,6 @@ group :development do
 
   gem 'guard-bundler'
   gem 'guard-coffeescript'
-  gem 'guard-cucumber', :git => 'git://github.com/guard/guard-cucumber.git'
   gem 'guard-rack'
   gem 'guard-rspec'
   gem 'guard-sass'
@@ -37,11 +36,9 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'cucumber'
-  gem 'cucumber-websteps'
   gem 'database_cleaner'
   gem 'fabrication'
   gem 'faker'
-  gem 'launchy'
   gem 'rspec'
+  gem 'turnip'
 end

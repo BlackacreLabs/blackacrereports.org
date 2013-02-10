@@ -1,0 +1,121 @@
+*
+  font-family: 'Alegreya', serif
+.smallcaps
+  font-family: 'Alegreya SC', serif !important
+
+html
+  overflow: -moz-scrollbars-vertical
+  overflow-y: scroll
+
+.brand, .opinion strong
+  font-weight: normal
+  font-variant: small-caps
+  font-family: 'Alegreya SC', serif
+
+.alert strong
+  font-family: 'Alegreya', serif
+  font-variant: none
+  font-weight: bold
+
+.opinion
+  font-size: 130%
+  p
+    text-indent: 2.5ex
+    line-height: 130%
+  cite
+    color: #628CA1
+  blockquote p
+    text-indent: 2.5ex
+    font-size: 100%
+  .flush
+    text-indent: 0px !important
+
+@media all and (max-width: 1200px)
+  .opinion p
+    text-align: justify
+
+.raggedleft
+  text-align: right !important
+
+.opinion
+  h1, h2, h3, h4
+    margin-top: 0.5em
+    text-align: center
+  hr
+    border: none
+    margin: auto
+    text-align: center
+    &:after
+      content: ' * * * '
+      display: inline-block
+      font-size: 150%
+  .pageBreak
+    text-indent: 0px !important
+    font-weight: 900
+    font-style: normal
+    &:before
+      content: " [ "
+    &:after
+      content: " ] "
+    &:hover
+      text-decoration: none
+  .reference
+    font-weight: 900
+
+footer
+  height: 100px
+
+@media print
+  .navbar
+    display: none
+  .noprint
+    display: none !important
+  .opinion
+    *
+      text-align: justify
+      -ms-word-break: break-all
+      word-break: break-all
+      word-break: break-word
+      -webkit-hyphens: auto
+      -moz-hyphens: auto
+      hyphens: auto
+      font-size: 80%
+    > *
+      margin-left: 0.5in
+      margin-right: 0.5in
+
+.fixed-bottom
+  position: fixed
+  bottom: 0
+  width: 100%
+
+.nomargin
+  margin-left: 0 !important
+
+.opinion section.footnotes
+  border-top: 1px solid #ccc
+  padding-top: 2em
+  margin-top: 2em
+
+#HUD
+  font-variant: normal
+  font-weight: normal
+  font-size: 14px
+  overflow: hidden
+  color: black
+
+.popover
+  width: 200px
+  // problems within input-append s
+  font-size: 14px !important
+
+.number
+  &:hover
+    text-decoration: none
+
+.case-header
+  position: fixed
+  background: white
+  border-bottom: 1px solid #eee
+.case-meta
+  margin-top: 110px
