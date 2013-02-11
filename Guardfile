@@ -5,6 +5,7 @@ end
 guard 'coffeescript', :input => 'public/js'
 
 guard 'rack', :server => :thin do
+  watch('.env')
   watch('Gemfile.lock')
   watch('application.rb')
   watch('environment.rb')
