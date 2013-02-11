@@ -20,7 +20,13 @@ class BlackacreReports < Sinatra::Base
 
   # Analytics
   configure :production do
-    require 'newrelic_rpm'
+    require 'newrelic_rpm' if ENV['NEW_RELIC_ID']
+
+    if ENV['GOOGLE_ANALYTICS_ID']
+      require 'rack-google-analytics'
+      use Rack::GoogleAnalytics,
+        :tracker => ENV['GOOGLE_ANALYTICS_ID']
+    end
   end
 
   # Redirects
