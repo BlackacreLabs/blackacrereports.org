@@ -40,6 +40,22 @@ class Case
     ret.string
   end
 
+  def pdf_href
+    if volume && page
+      "/pdf?volume=#{volume}&page=#{page}"
+    else
+      "/pdf?number=#{number}"
+    end
+  end
+
+  def github_href
+    if volume && page
+      "#{ENV['GITHUB_BASE']}/reported_decisions/#{volume}/#{page}"
+    elsif number && decided
+      "#{ENV['GITHUB_BASE']}/slip_opinions/#{number}"
+    end
+  end
+
   def citation
     if volume && page
       "#{volume} U.S. #{page} (#{decided.year})"

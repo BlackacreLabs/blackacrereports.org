@@ -1,11 +1,10 @@
 .row-fluid
-  .span9
-    %h1
-      = @case.style
-      %br
-      %small= @case.citation
-.row-fluid
-  .span9
+  .span8
+    .page-header
+      %h1
+        = @case.style
+        %br
+        %small= @case.citation
     %ul.inline.meta.well
       - if @case.argued
         %li 
@@ -19,6 +18,22 @@
         %li
           Number
           = @case.number
+      %li
+        %a.pop{:href => @case.pdf_href,
+               'data-placement' => 'top',
+               'data-trigger' => 'hover',
+               'data-content' => 'View the case just as it appears in U.S. Reports',
+               :title => 'Download PDF'}
+          %i.icon-book
+      %li
+        %a.pop{:href => @case.github_href,
+               'data-placement' => 'top',
+               'data-trigger' => 'hover',
+               'data-content' => 'View the Blackacre Reports data files for this case on the GitHub computer code sharing site',
+               :title => 'View on GitHub',
+               :target => '_blank'}
+          %i.icon-cog
+
 - sorted = @case.documents.sort {|a, b| a.page <=> b.page }
 .tabbable
   .row-fluid
@@ -26,7 +41,8 @@
       %ul.nav.nav-tabs
         - sorted.each_with_index do |opinion, index|
           %li{:class => index == 0 ? 'active' : nil }
-            %a{:id => "#{opinion.short_name}-tab", :href => "##{opinion.short_name}", 'data-toggle' => 'tab'}
+            %a{ :id => "#{opinion.short_name}-tab",
+                :href => "##{opinion.short_name}", 'data-toggle' => 'tab'}
               %i{:class => "#{opinion.type_icon}"}= ' '
               %strong= opinion.short_name
   .tab-content

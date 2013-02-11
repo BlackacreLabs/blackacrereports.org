@@ -11,7 +11,13 @@
   %body
     = partial :navbar
     .container-fluid
+      - if params[:alert]
+        .row-fluid
+          .alert.alert-error
+            %p= params[:alert]
+    .container-fluid
       = yield
     = partial :footer
     %script{:src => 'https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'}
     %script{:src => '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js'}
+    %script{:src => '/js/interface.js'}

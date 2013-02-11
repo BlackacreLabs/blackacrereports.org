@@ -9,15 +9,20 @@ class BlackacreReports < Sinatra::Base
 
   get '/pdf' do
     v, p = params.values_at(:volume, :page)
+    number = params[:number]
     if v && p
+      object = "/US/#{v}-US-#{p}.pdf"
+    elsif number
+      object = "/US/#{number}.pdf"
+    end
+    if object.nil? || !S3::S3Object.exists?(object, ENV['S3_BUCKET'])
+      redirect to("/?alert=#{NO_SUCH_FILE_ALERT}")
+    else
       redirect S3::S3Object.url_for(
-        "/US/#{v}-US-#{p}.pdf",
-        ENV['S3_BUCKET'],
+        object, ENV['S3_BUCKET'],
         :use_ssl => true,
         :authenticated => false
       )
-    else
-      redirect to("/?alert=#{NO_SUCH_FILE_ALERT}")
     end
   end
 end
